@@ -21,21 +21,20 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome Home</h2>
+          <h2>Welcome Home MongoRedux</h2>
         </div>
-        <p className="App-intro">
-          here is a start.
-        </p>
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
-        <h1>Links</h1>
-        {this.state.links.map(links =>
-          <div key={links.id}>{links.url}</div>
-        )}
-        <div>
-          <Post />
+        <div className="Content">
+            <h1>Users</h1>
+            {this.state.users.map(user =>
+              <div key={user.id}>{user.username}</div>
+            )}
+            <h1>Links</h1>
+            {this.state.links.map(links =>
+              <div key={links.id}>{links.url}</div>
+            )}
+            <div>
+              <Post />
+            </div>
         </div>
       </div>
     );
