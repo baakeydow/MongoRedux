@@ -36,6 +36,8 @@ export default function reducer(state={
           user: {...state.user, age: action.payload},
         }
       }
+      default:
+        return state;
     }
 
     return state

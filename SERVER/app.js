@@ -5,7 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var connection  = require('express-myconnection');
+var mysql = require('mysql');
 
+var customers = require('./routes/customers');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var links = require('./routes/links');
@@ -38,12 +41,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(path.resolve(__dirname + '/../client/build')));
+app.use(
+    connection(mysql,{
+        host: 'localhost',
+        user: 'test',
+        password : 'test',
+        port : 3306, //port mysql
+        database:'test'
+    },'pool') //or single
+);
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/links', links);
 app.use('/posts', posts);
+
+app.get('/customers', customers.list);
+app.get('/customers/add', customers.add);
+app.get('/customers/delete/:id', customers.delete_customer);
+app.get('/customers/edit/:id', customers.edit);
+
+app.post('/customers/add', customers.save);
+app.post('/customers/edit/:id',customers.save_edit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

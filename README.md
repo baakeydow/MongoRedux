@@ -6,6 +6,7 @@ yep
 
 [mongodb](https://www.mongodb.com/download-center?jmp=nav#community)  
 [node](https://nodejs.org/en/)  
+[mysql](https://www.mysql.com/)  
 [npm](https://www.npmjs.com/package/npm)
 
 ### Getting Started DEVMODE
@@ -13,6 +14,7 @@ yep
 Starting db
 
 `sudo mongod`  
+`mysql -u test test -ptest < ./SERVER/customer.sql`  
 
 Starting server
 
@@ -35,5 +37,3 @@ Starting server
 Starting client
 
 `cd CLIENT && yarn && npm run prod`
-
-

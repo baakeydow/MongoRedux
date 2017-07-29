@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-
+import { withRouter } from 'react-router-dom';
 import { fetchUser } from "./actions/userActions"
 import { fetchPosts } from "./actions/postsActions"
 import './css/Post.css';
@@ -19,7 +19,7 @@ class Post extends React.Component {
     const mappedPosts = posts.map(post => <div className="postContent" key={post.cuid}>{post.content}</div>)
 
     if (!posts.length) {
-      return <button className="btn btn-info posts" onClick={this.fetchPosts.bind(this)}>Load Posts</button>
+      return <button className="btn btn-danger posts" onClick={this.fetchPosts.bind(this)}>Load Posts</button>
     }
 
     return (
@@ -32,9 +32,8 @@ class Post extends React.Component {
     );
   }
 }
-
-export default connect(state => ({
+export default withRouter(connect(state => ({
   user: state.user.user,
   userFetched: state.user.fetched,
   posts: state.posts.posts,
-}))(Post);
+}))(Post));

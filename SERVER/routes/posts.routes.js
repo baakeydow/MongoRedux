@@ -8,12 +8,12 @@ var router = express.Router();
 router.route('/listPosts').get(PostController.getPosts);
 
 // Get one post by cuid
-router.route('/:cuid').get(PostController.getPost);
+router.route('/get/:cuid').get(PostController.getPost);
 
 // Add a new Post
-router.route('/posts').post(PostController.addPost);
+router.route('/add').post(PostController.addPost);
 
 // Delete a post by cuid
-router.route('/:cuid').delete(PostController.deletePost);
+router.route('/del/:cuid').delete(PostController.deletePost);
 
 module.exports = router;

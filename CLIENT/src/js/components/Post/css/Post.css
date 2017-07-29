@@ -1,5 +1,9 @@
-.btn.btn-info.posts {
+.btn.btn-danger.posts {
     margin-top: 40px;
+}
+.buttonAlign {
+    margin: 5px 20px;
+    text-align:right;
 }
 .posts {
     margin: 10px 25px;

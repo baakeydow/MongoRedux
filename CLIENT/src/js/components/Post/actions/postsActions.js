@@ -3,8 +3,9 @@ import axios from "axios";
 export function fetchPosts() {
   return function(dispatch) {
     dispatch({type: "FETCH_POSTS"});
+    var url = process.env.NODE_ENV === 'development' ? '/posts/listposts' : 'https://api.yourawesomedomain.com/posts/listposts';
 
-    axios.get('/posts/listposts')
+    axios.get(url)
       .then((response) => {
         dispatch({type: "FETCH_POSTS_FULFILLED", payload: response.data.posts})
       })

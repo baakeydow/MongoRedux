@@ -1,7 +1,3 @@
-.Articles {
-  text-align: justify;
-  margin: 10px 100px;
-  padding: 0px;
-  font-family: sans-serif;
-  display:inline-grid;
+.posts > h4 {
+    font-weight: bold;
 }

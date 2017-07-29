@@ -43,6 +43,8 @@ export default function reducer(state={
           posts: state.posts.filter(post => post.id !== action.payload),
         }
       }
+      default:
+        return state;
     }
 
     return state
