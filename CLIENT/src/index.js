@@ -4,7 +4,8 @@ import { Provider } from "react-redux";
 import {
   BrowserRouter as Router,
   Route,
-  HashRouter
+  HashRouter,
+  Switch
 } from 'react-router-dom';
 import App from './js/components/App/App';
 
@@ -20,12 +21,12 @@ const app = document.getElementById('root')
 
 ReactDOM.render(<Provider store={store}>
     <Router history={HashRouter}>
-      <switch>
+      <Switch>
         <Route path="/" component={Layout}/>
         <Route exact path="/"  component={App}/>
         <Route path="/archives" name="archives" component={Featured}/>
         <Route path="/settings" name="settings" component={Settings}/>
-      </switch>
+      </Switch>
     </Router>
 </Provider>, app);
 registerServiceWorker();
