@@ -7,11 +7,11 @@ yep
 [mongodb](https://www.mongodb.com/download-center?jmp=nav#community)  
 [node](https://nodejs.org/en/)  
 [mysql](https://www.mysql.com/)  
-[npm](https://www.npmjs.com/package/npm)
+[yarn](https://yarnpkg.com)
 
 ### Getting Started DEVMODE
 
-Starting db
+Starting db / Dumping data
 
 `sudo mongod`  
 `mysql -u test test -ptest < ./SERVER/customer.sql`  
@@ -26,9 +26,10 @@ Starting client
 
 ### Getting Started PROD
 
-Starting db
+Starting db / Dumping data
 
 `sudo mongod`  
+`mysql -u test test -ptest < ./SERVER/customer.sql`  
 
 Starting server
 
