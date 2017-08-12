@@ -1,0 +1,7 @@
+.posts > h4 {
+    font-weight: bold;
+}
+.buttonAlign {
+    margin: 5px 20px;
+    text-align:right;
+}

@@ -1,9 +1,7 @@
 import React from "react";
 import './css/Article.css';
 
-export default class Articles extends React.Component {
-  render() {
-    const { title } = this.props;
+const Articles = ({title}) => {
 
     return (
       <div className="posts">
@@ -14,5 +12,6 @@ export default class Articles extends React.Component {
         </div>
       </div>
     );
-  }
 }
+
+export default Articles;

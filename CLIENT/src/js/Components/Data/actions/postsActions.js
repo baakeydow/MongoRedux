@@ -3,7 +3,7 @@ import axios from "axios";
 export function fetchPosts() {
   return function(dispatch) {
     dispatch({type: "FETCH_POSTS"});
-    var url = process.env.NODE_ENV === 'development' ? '/posts/listposts' : 'https://api.yourawesomedomain.com/posts/listposts';
+    var url = process.env.NODE_ENV === 'development' ? '/posts/listposts' : 'https://yourAwesomeDomain,com/posts/listposts';
 
     axios.get(url)
       .then((response) => {

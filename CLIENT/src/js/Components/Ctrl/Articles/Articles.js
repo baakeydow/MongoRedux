@@ -1,10 +1,10 @@
 import React from "react";
 
-import Article from "../components/Articles/Articles";
+import Articles from "../../PAGES/Articles/Articles";
 
-export default class Featured extends React.Component {
+export default class ArticleCtrl extends React.Component {
   render() {
-    const Articles = [
+    const Posts = [
       "Some Article",
       "Some Other Article",
       "Yet Another Article",
@@ -17,7 +17,7 @@ export default class Featured extends React.Component {
       "Some Other Article",
       "Yet Another Article",
       "Still More",
-    ].map((title, i) => <Article key={i} title={title}/> );
+    ].map((title, i) => <Articles key={i} title={title}/> );
 
     const adText = [
       "Ad spot #1",
@@ -28,7 +28,7 @@ export default class Featured extends React.Component {
     ];
 
     const randomAd = adText[Math.round( Math.random() * (adText.length-1) )];
-    console.log("featured");
+
     return (
       <div>
         <div className="row">
@@ -39,7 +39,7 @@ export default class Featured extends React.Component {
           </div>
         </div>
 
-        <div className="row">{Articles}</div>
+        <div className="container">{Posts}</div>
       </div>
     );
   }

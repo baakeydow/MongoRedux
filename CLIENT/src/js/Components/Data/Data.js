@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { withRouter } from 'react-router-dom';
 import { fetchUser } from "./actions/userActions"
 import { fetchPosts } from "./actions/postsActions"
-import './css/Post.css';
+import './css/Data.css';
 
 class Post extends React.Component {
   componentWillMount() {

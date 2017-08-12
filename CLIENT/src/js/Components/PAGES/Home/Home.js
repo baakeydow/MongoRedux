@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Post from '../Post/Post';
+import Data from '../../Data/Data';
 import logo from './images/logo.svg';
-import './css/App.css';
+import './css/Home.css';
 import './css/index.css';
 
-class App extends Component {
+class Home extends Component {
   state = {users: [], links: [], posts: []}
 
   componentDidMount() {
@@ -33,7 +33,7 @@ class App extends Component {
               <div key={links.id}>{links.url}</div>
             )}
             <div>
-              <Post />
+              <Data />
             </div>
         </div>
       </div>
@@ -41,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;
