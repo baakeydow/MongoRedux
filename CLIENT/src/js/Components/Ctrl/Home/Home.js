@@ -17,6 +17,14 @@ export default class Homectrl extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      me: nextProps.me,
+      users: nextProps.users,
+      links: nextProps.links
+    });
+  }
+
   componentDidMount() {
     // console.log(this.props);
   }
