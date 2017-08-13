@@ -15,13 +15,13 @@ import AboutCtrl from "./Ctrl/About/About";
 import ContactCtrl from "./Ctrl/Contact/Contact";
 import Articles from "./Ctrl/Articles/Articles";
 
-import { getLg } from "./XINIT/wordingActions"
+import { getLg } from "./XINIT/wordingActions";
+import { fetchUser } from "./Data/actions/userActions";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       users: [],
       links: [],
@@ -29,33 +29,24 @@ class App extends Component {
       wording: {}
     };
     this.changeLang = this.changeLang.bind(this);
+    this.props.dispatch(fetchUser());
+    this.props.dispatch(getLg(this.state.lang));
+    console.log('Constructed !!!!');
   }
 
   componentWillMount() {
-    console.log('WILL-MOUNT');
-    console.log(this.state.lang);
-    this.props.dispatch(getLg(this.state.lang));
-    console.log('=======MOUNTING !===========');
-  }
-
-  componentDidMount() {
-      this.state = {
-        lang: this.props.lang.lang,
-        wording: this.props.lang.wording
-      };
-      console.log('DID-MOUNT');
-      console.log(this.state);
-      console.log(this.props);
-      console.log('=======MOUNTED !===========');
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+    fetch('/links')
+      .then(res => res.json())
+      .then(links => this.setState({ links }));
   }
 
   changeLang() {
-    console.log(this.state);
     const lang = this.props.lang.lang === "EN" ? "FR" : "EN";
     this.props.dispatch(getLg(lang));
-    this.setState({wording: this.props.lang.wording,
-                  lang: this.props.lang.lang});
-    console.log(this.state);
+    this.setState({wording: this.props.lang.wording});
   }
 
   render() {
@@ -63,8 +54,8 @@ class App extends Component {
           <Router history={HashRouter}>
             <switch>
               <Route path='/' render={routeProps => <Layout {...routeProps} myProps={this.props} onChange={this.changeLang}/>} />
-              <Route exact path="/"  component={HomeCtrl}/>
-              <Route path="/about" component={AboutCtrl}/>
+              <Route path='/home' render={routeProps => <HomeCtrl {...routeProps} me={this.props.user.name} users={this.state.users} links={this.state.links}/>} />
+              <Route path='/about' render={routeProps => <AboutCtrl {...routeProps} wording={this.props.lang.wording.about}/>} />
               <Route path="/contact" component={ContactCtrl}/>
               <Route path="/articles" component={Articles}/>
               <Route path="/data" component={Data}/>
@@ -76,8 +67,8 @@ class App extends Component {
               // <Route component={Articles}/>
 
 export default compose(connect(state => ({
+  user: state.user.user,
   users: state.user,
   links: state.links,
   lang: state.lang,
-  wording: state.wording,
 }))(App));

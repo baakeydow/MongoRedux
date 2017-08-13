@@ -1,12 +1,12 @@
 import React from "react";
 
-const About = () => {
+const About = ({text}) => {
     const containerStyle = {
        margin: "100px"
     };
     return (
       <div style={containerStyle}>
-        <h1>About</h1>
+        <h1>{text.title}</h1>
       </div>
     );
 }

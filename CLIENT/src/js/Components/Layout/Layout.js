@@ -5,23 +5,30 @@ export default class Layout extends React.Component {
 
   constructor(props) {
     super(props);
-    // console.log(props);
+    console.log(props);
+  }
+
+  componentWillMount() {
+    this.setState({onchange: this.props.onChange, myProps: this.props.myProps});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({myProps: this.props.myProps});
   }
 
   componentDidMount() {
-    // this.setState({props: this.props});
-    // console.log(this.props);
+    console.log('LAYOUT DID MOUNT !');
   }
 
   render() {
     const { location } = this.props;
-    console.log(this.props.myProps);
+    const wording = this.props.myProps;
     const containerStyle = {
       marginTop: "40px"
     };
     return (
       <div style={containerStyle}>
-        <Nav location={location} changeLang={this.props.onChange} navProps={this.props.myProps}/>
+        <Nav location={location} changeLang={this.state.onchange} navProps={wording}/>
       </div>
     );
   }

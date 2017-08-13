@@ -4,20 +4,10 @@ import { NavLink } from "react-router-dom";
 export default class Nav extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props);
     this.state = {
       collapsed: true,
       wording: props.navProps.lang.wording
     };
-  }
-
-  componentWillMount() {
-    // console.log(this.props);
-  }
-
-  componentDidMount() {
-    // this.setState({wording: this.props.navProps.lang.wording});
-    // console.log(this.props);
   }
 
   toggleCollapse() {
@@ -29,6 +19,10 @@ export default class Nav extends React.Component {
             }
         );
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({wording: this.props.navProps.lang.wording});
+  }
+
 
   render() {
     const { location } = this.props;
@@ -47,9 +41,8 @@ export default class Nav extends React.Component {
     const buttonStyle = {
       margin: "0 50px 0 20px"
     };
-    const wording = this.props.navProps.lang.wording;
+    const wording = this.state.wording;
     const lang = this.props.navProps.lang.lang === 'EN' ? "FR" : "EN";
-    // console.log(wording);
     return (
       <nav style={navStyle} className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
@@ -68,18 +61,16 @@ export default class Nav extends React.Component {
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className={featuredClass}>
-                <NavLink to="/" onClick={this.toggleCollapse.bind(this)}>{wording.home}</NavLink>
+                <NavLink to="home" onClick={this.toggleCollapse.bind(this)}>{wording.home}</NavLink>
               </li>
               <li className={settingsClass}>
-                <NavLink to="about" onClick={this.toggleCollapse.bind(this)}>{wording.about}</NavLink>
+                <NavLink to="about" onClick={this.toggleCollapse.bind(this)}>{wording.about.title}</NavLink>
               </li>
               <li className={settingsClass}>
                 <NavLink to="contact" onClick={this.toggleCollapse.bind(this)}>{wording.contact}</NavLink>
               </li>
               <li className={settingsClass}>
                 <NavLink to="articles" onClick={this.toggleCollapse.bind(this)}>{wording.articles}</NavLink>
-              </li>
-              <li className={settingsClass}>
               </li>
             </ul>
           </div>

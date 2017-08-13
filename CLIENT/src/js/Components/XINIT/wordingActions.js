@@ -1,15 +1,17 @@
 import axios from "axios";
 const Hello = {
   home: "Home",
-  tights: "Our Tights",
-  about: "About",
+  about: {
+    title: "About"
+  },
   contact: "Contact Us",
   articles: "Articles"
 }
 const Bonjour = {
   home: "Home",
-  tights: "Nos Collants",
-  about: "A propos",
+  about: {
+    title: "A propos"
+  },
   contact: "Contactez Nous",
   articles: "Articles"
 }
