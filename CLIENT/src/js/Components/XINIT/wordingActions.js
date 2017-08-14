@@ -1,19 +1,31 @@
 import axios from "axios";
 const Hello = {
-  home: "Home",
+  home: {
+    title: "Welcome"
+  },
+  articles: {
+    title: "Articles"
+  },
   about: {
     title: "About"
   },
-  contact: "Contact Us",
-  articles: "Articles"
+  contact: {
+    title: "Contact Us"
+  }
 }
 const Bonjour = {
-  home: "Home",
-  about: {
-    title: "A propos"
+  home: {
+    title: "Salut !"
   },
-  contact: "Contactez Nous",
-  articles: "Articles"
+  articles: {
+    title: "Nos Articles"
+  },
+  about: {
+    title: "A Propos"
+  },
+  contact: {
+    title: "Contactez Nous"
+  }
 }
 
 export function getLg(lang) {

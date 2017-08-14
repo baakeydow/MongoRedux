@@ -1,13 +1,14 @@
 import React from "react";
+import './css/Contact.css';
 
-const Settings = () => {
-  const containerStyle = {
-     margin: "100px"
-  };
+const Contact = ({ wording }) => {
+
   return (
-    <div style={containerStyle}>
-      <h1>Contact</h1>
-    </div>
+    <div className="container">
+      <div className="Content title">
+        <h3>{wording.title}</h3>
+      </div>
+     </div>
   );
 }
-export default Settings
+export default Contact

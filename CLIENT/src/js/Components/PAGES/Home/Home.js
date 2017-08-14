@@ -4,13 +4,13 @@ import logo from './images/logo.svg';
 import './css/Home.css';
 import './css/index.css';
 
-const Home = ({links, users, boss}) => {
-
+const Home = ({links, users, boss, wording}) => {
+console.log(wording);
   return (
     <div className="App">
       <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome Home {boss}</h2>
+        <h2>{wording.title} {boss}</h2>
       </div>
       <div className="Content">
           <h1>Users</h1>

@@ -5,15 +5,14 @@ export default class Layout extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   componentWillMount() {
-    this.setState({onchange: this.props.onChange, myProps: this.props.myProps});
+    this.setState({lang: this.props.lang, onchange: this.props.onChange, wording: this.props.wording});
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({myProps: this.props.myProps});
+    this.setState({wording: this.props.wording});
   }
 
   componentDidMount() {
@@ -22,13 +21,17 @@ export default class Layout extends React.Component {
 
   render() {
     const { location } = this.props;
-    const wording = this.props.myProps;
+    let NavProps = {
+      lang: this.props.lang,
+      wording: this.props.wording,
+    }
+    console.log(NavProps);
     const containerStyle = {
       marginTop: "40px"
     };
     return (
       <div style={containerStyle}>
-        <Nav location={location} changeLang={this.state.onchange} navProps={wording}/>
+        <Nav location={location} changeLang={this.state.onchange} navProps={NavProps}/>
       </div>
     );
   }

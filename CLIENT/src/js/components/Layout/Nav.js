@@ -4,25 +4,33 @@ import { NavLink } from "react-router-dom";
 export default class Nav extends React.Component {
   constructor(props) {
     super(props)
+    // console.log(props);
     this.state = {
       collapsed: true,
-      wording: props.navProps.lang.wording
+      wording: props.navProps.wording,
+      lang: props.navProps.lang
     };
   }
 
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState(
-            {
-              collapsed,
-              wording: this.props.navProps.lang.wording
-            }
-        );
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({wording: this.props.navProps.lang.wording});
+      {
+        collapsed,
+        wording: this.props.navProps.wording,
+        lang: this.props.navProps.lang
+      }
+    );
   }
 
+  componentWillReceiveProps(nextProps) {
+    // console.log(this.props);
+    // console.log(nextProps);
+    this.setState({
+      wording: nextProps.navProps.wording ? nextProps.navProps.wording : this.props.navProps.wording,
+      lang: nextProps.navProps.lang ? nextProps.navProps.lang : this.props.navProps.lang
+    });
+  }
 
   render() {
     const { location } = this.props;
@@ -36,13 +44,14 @@ export default class Nav extends React.Component {
     };
     const spanStyle = {
         display: "block",
-        height: "8px"
+        height: "6px"
     };
     const buttonStyle = {
-      margin: "0 50px 0 20px"
+        margin: "0 50px 0 20px"
     };
     const wording = this.state.wording;
-    const lang = this.props.navProps.lang.lang === 'EN' ? "FR" : "EN";
+    const lang = this.props.navProps.lang === 'EN' ? "FR" : "EN";
+
     return (
       <nav style={navStyle} className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
@@ -61,16 +70,16 @@ export default class Nav extends React.Component {
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className={featuredClass}>
-                <NavLink to="home" onClick={this.toggleCollapse.bind(this)}>{wording.home}</NavLink>
+                <NavLink to="home" onClick={this.toggleCollapse.bind(this)}>{wording.home.title}</NavLink>
+              </li>
+              <li className={settingsClass}>
+                <NavLink to="articles" onClick={this.toggleCollapse.bind(this)}>{wording.articles.title}</NavLink>
               </li>
               <li className={settingsClass}>
                 <NavLink to="about" onClick={this.toggleCollapse.bind(this)}>{wording.about.title}</NavLink>
               </li>
               <li className={settingsClass}>
-                <NavLink to="contact" onClick={this.toggleCollapse.bind(this)}>{wording.contact}</NavLink>
-              </li>
-              <li className={settingsClass}>
-                <NavLink to="articles" onClick={this.toggleCollapse.bind(this)}>{wording.articles}</NavLink>
+                <NavLink to="contact" onClick={this.toggleCollapse.bind(this)}>{wording.contact.title}</NavLink>
               </li>
             </ul>
           </div>

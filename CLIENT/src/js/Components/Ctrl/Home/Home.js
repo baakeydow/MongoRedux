@@ -13,7 +13,8 @@ export default class Homectrl extends React.Component {
     this.state = {
       me: this.props.me,
       users: this.props.users,
-      links: this.props.links
+      links: this.props.links,
+      wording: this.props.wording
     };
   }
 
@@ -21,18 +22,18 @@ export default class Homectrl extends React.Component {
     this.setState({
       me: nextProps.me,
       users: nextProps.users,
-      links: nextProps.links
+      links: nextProps.links,
+      wording: nextProps.wording ? nextProps.wording : this.props.wording
     });
   }
 
   componentDidMount() {
-    // console.log(this.props);
+    console.log('HOME CTRL MOUNTED !!!!');
   }
 
   render() {
-    // console.log(this.state);
     return (
-        <Home links={this.state.links} users={this.state.users} boss={this.state.me}/>
+        <Home links={this.state.links} users={this.state.users} boss={this.state.me} wording={this.state.wording}/>
     );
   }
 }

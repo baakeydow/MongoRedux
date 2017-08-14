@@ -5,6 +5,10 @@ export default function reducer(state={
     fetched: false,
     error: null,
   }, action) {
+// console.log('<=LANG-Reducer=>');
+// console.log(action);
+// console.log(state);
+// console.log('>=LANG-Reducer=<');
     switch (action.type) {
       case "GETFRENCH": {
         state.wording = action.payload
